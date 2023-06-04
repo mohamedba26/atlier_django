@@ -14,8 +14,15 @@ from rest_framework import viewsets
 
 @login_required
 def index(request):
+    if request.method == "POST" :
+        form = ProduitForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/magasin')
+    else :
+        form = ProduitForm()
     list=produit.objects.all()
-    return render(request,'magasin/vitrine.html',{'list':list})
+    return render(request,'magasin/vitrine.html',{'list':list,'form':form})
 
 @login_required
 def myProducts(request):

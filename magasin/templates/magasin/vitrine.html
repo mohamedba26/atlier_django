@@ -22,4 +22,9 @@
         </div>
 </form>
 </div>
+<form method='POST' class="post-form ms-5 me-5 mt-3 mb-3 p-4 rounded" style="border:#afa6a6 2px solid; ">
+    {% csrf_token %}
+    {{form}}
+    <button type="sumit" class="btn btn-danger">Enregistrer</button>
+</form>
 {% endblock %}
